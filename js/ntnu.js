@@ -3,7 +3,7 @@ var atype = {
     JBIMAGE_PNG : 10,
     JBIMAGE_SVG : 11,
     JBIMAGE_JPG : 12,
-    JBVIDEO: 30,    
+    JBVIDEO_MP4 : 30,    
 };
 
 const MAX_LOCAL_FILE_SIZE = (25*1024*1024);
@@ -130,7 +130,7 @@ class JBVideo extends JBData {
         if ( mode == "path" ) {
             newContent = "<video id=\"vid-" + id + "\" controls> <source src=\"" + this.getLocalName() + "\"/></video>";
         } else if ( mode == "url" ) {
-            newContent = "<iframe id=\"vid-" + id + "\" src=\"" + this.url + "\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>/>";
+            newContent = "<iframe id=\"vid-" + id + "\" src=\"" + this.url + "\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>";
         } else if ( mode == "localhost" ) {
             newContent = "<video id=\"vid-" + id + "\" controls> <source src=\"" + "http://localhost:8000/" + this.getLocalName() + "\"/></video>";
         } else if ( mode == "file" ) {
@@ -143,7 +143,7 @@ class JBVideo extends JBData {
             }
         }
         
-        console.log("JBVideo.updateAsset(" + id + "," + "," + mode + ") =>" + newContent );
+        console.log("JBVideo.updateAsset(" + id + "," + "," + mode + ") size (" + this.size + ") =>" + newContent );
         return newContent;
     }    
 }
